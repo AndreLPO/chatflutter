@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class InputPasswordWidget extends StatefulWidget {
-  const InputPasswordWidget({Key? key}) : super(key: key);
+  const InputPasswordWidget({Key? key, this.controller}) : super(key: key);
+  final TextEditingController? controller;
 
   @override
   State<InputPasswordWidget> createState() => _InputPasswordWidgetState();

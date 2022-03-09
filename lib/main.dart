@@ -1,6 +1,7 @@
 import 'package:chatflutter/app_widget.dart';
 import 'package:chatflutter/modules/Home/home_page.dart';
 import 'package:chatflutter/modules/Login/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -50,6 +51,16 @@ class AppModule extends Module {
   List<Bind> get binds => [];
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => const LoginPage()),
+        ChildRoute('/', child: (context, args) {
+          return StreamBuilder<User?>(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (_, snapshot) {
+                if (snapshot.hasData) {
+                  return const HomePage();
+                } else {
+                  return const LoginPage();
+                }
+              });
+        }),
       ];
 }
