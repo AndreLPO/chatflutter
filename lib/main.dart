@@ -57,6 +57,11 @@ class AppModule extends Module {
               builder: (_, snapshot) {
                 if (snapshot.hasData) {
                   return const HomePage();
+                } else if (snapshot.connectionState ==
+                    ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 } else {
                   return const LoginPage();
                 }

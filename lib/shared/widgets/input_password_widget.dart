@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class InputPasswordWidget extends StatefulWidget {
-  const InputPasswordWidget({Key? key, this.controller}) : super(key: key);
-  final TextEditingController? controller;
+  final Function(String value)? onChanged;
+  const InputPasswordWidget({Key? key, this.onChanged}) : super(key: key);
 
   @override
   State<InputPasswordWidget> createState() => _InputPasswordWidgetState();
@@ -12,6 +12,7 @@ class _InputPasswordWidgetState extends State<InputPasswordWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         label: const Text("Senha"),
         suffixIcon: Padding(
