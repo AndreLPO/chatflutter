@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 class InputTextWidget extends StatefulWidget {
   Function(String value)? onChanged;
-  InputTextWidget({Key? key, this.controller, required this.onChanged})
+  String? Function(String? value)? validator;
+  String label;
+  InputTextWidget(
+      {Key? key,
+      required this.label,
+      required this.onChanged,
+      required this.validator})
       : super(key: key);
-  final TextEditingController? controller;
   @override
   State<InputTextWidget> createState() => _InputTextWidgetState();
 }
@@ -14,10 +19,10 @@ class _InputTextWidgetState extends State<InputTextWidget> {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: widget.onChanged,
-      controller: widget.controller,
-      decoration: const InputDecoration(
-        label: Text("Login"),
-        border: OutlineInputBorder(),
+      validator: widget.validator,
+      decoration: InputDecoration(
+        label: Text(widget.label),
+        border: const OutlineInputBorder(),
       ),
     );
   }
