@@ -25,9 +25,23 @@ class _HomePageState extends State<HomePage> {
           child: CircleAvatar(),
         ),
         actions: [
-          IconButton(
-              onPressed: () async => await FirebaseAuth.instance.signOut(),
-              icon: const Icon(Icons.logout))
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert, color: Colors.black54),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  onTap: () {},
+                  child: const Icon(
+                    Icons.settings,
+                    color: Colors.black45,
+                  )),
+              PopupMenuItem(
+                  onTap: () async => await FirebaseAuth.instance.signOut(),
+                  child: const Icon(
+                    Icons.logout,
+                    color: Colors.black45,
+                  ))
+            ],
+          )
         ],
         backgroundColor: Colors.white70,
       ),

@@ -89,20 +89,31 @@ class _ChatPageState extends State<ChatPage> {
                   );
                 }
 
-                return ListView(
-                  reverse: true,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  children:
-                      snapshot.data!.docs.map((DocumentSnapshot document) {
-                    Map<String, dynamic> data =
-                        document.data()! as Map<String, dynamic>;
-                    return ListTile(
-                      onLongPress: () {},
-                      title: data['de'] == user.email
-                          ? MensagemEnviada(mensagem: data['mensagem'])
-                          : MensagemRecebida(mensagem: data['mensagem']),
-                    );
-                  }).toList(),
+                return Container(
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                    image: NetworkImage(
+                        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+                    fit: BoxFit.cover,
+                  )),
+                  child: ListView(
+                    reverse: true,
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    children:
+                        snapshot.data!.docs.map((DocumentSnapshot document) {
+                      Map<String, dynamic> data =
+                          document.data()! as Map<String, dynamic>;
+                      return ListTile(
+                        onLongPress: () {},
+                        title: data['de'] == user.email
+                            ? MensagemEnviada(mensagem: data['mensagem'])
+                            : MensagemRecebida(
+                                mensagem: data['mensagem'],
+                                de: data['de'],
+                              ),
+                      );
+                    }).toList(),
+                  ),
                 );
               },
             ),

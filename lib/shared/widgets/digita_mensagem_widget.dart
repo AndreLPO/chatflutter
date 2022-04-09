@@ -58,8 +58,8 @@ class _DigitaMensagemState extends State<DigitaMensagem> {
                 : const Icon(Icons.send_rounded),
             onPressed: () async {
               if (widget.model.mensagem != "") {
-                await _controller.adicionaMensagem(widget.model);
                 _controller.textController.clear();
+                await _controller.adicionaMensagem(widget.model);
                 widget.model.mensagem = "";
               }
             },

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class MensagemRecebida extends StatelessWidget {
   final String mensagem;
+  final String de;
 
-  const MensagemRecebida({Key? key, required this.mensagem}) : super(key: key);
+  const MensagemRecebida({Key? key, required this.mensagem, required this.de})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,8 @@ class MensagemRecebida extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Nome",
+            Text(
+              de,
               style:
                   TextStyle(color: Colors.purple, fontWeight: FontWeight.bold),
             ),
