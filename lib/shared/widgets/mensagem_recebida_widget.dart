@@ -14,7 +14,7 @@ class MensagemRecebida extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: const BoxDecoration(
-          color: Colors.black12,
+          color: Color.fromARGB(255, 226, 226, 226),
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(10),
             topLeft: Radius.circular(0),
